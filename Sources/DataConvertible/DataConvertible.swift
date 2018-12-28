@@ -113,6 +113,28 @@ extension Int64: NumberDataConvertible {
 	
 }
 
+// MARK: - UInt
+
+extension UInt: NumberDataConvertible {
+    
+}
+
+extension UInt8: NumberDataConvertible {
+    
+}
+
+extension UInt16: NumberDataConvertible {
+    
+}
+
+extension UInt32: NumberDataConvertible {
+    
+}
+
+extension UInt64: NumberDataConvertible {
+    
+}
+
 // MARK: - Float
 
 extension Float: NumberDataConvertible {
