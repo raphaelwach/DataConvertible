@@ -180,11 +180,14 @@ protocol CollectionDataConvertible: DataConvertible {
 extension CollectionDataConvertible {
 	
 	public var binaryData: Data {
-		return NSKeyedArchiver.archivedData(withRootObject: self)
+        return try! NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: true)
 	}
 	
 	public init?(binaryData: Data) {
-		self = NSKeyedUnarchiver.unarchiveObject(with: binaryData) as! Self
+        guard let me = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(binaryData) as! Self else {
+            return nil
+        }
+        self = me
 	}
 	
 }
