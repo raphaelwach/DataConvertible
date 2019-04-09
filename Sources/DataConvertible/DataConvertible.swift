@@ -86,7 +86,9 @@ extension NumberDataConvertible {
 		if binaryData.count != MemoryLayout<Self>.size {
 			return nil
 		}
-		self = binaryData.withUnsafeBytes { $0.pointee }
+		self = binaryData.withUnsafeBytes {
+			$0.load(as: Self.self)
+		}
 	}
 
 }
@@ -184,7 +186,7 @@ extension CollectionDataConvertible {
 	}
 	
 	public init?(binaryData: Data) {
-        guard let me = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(binaryData) as! Self else {
+		guard let me = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(binaryData) as? Self else {
             return nil
         }
         self = me
