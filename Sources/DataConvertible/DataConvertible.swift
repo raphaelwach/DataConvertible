@@ -30,7 +30,7 @@ SOFTWARE.
 
 import Foundation
 
-protocol DataConvertible {
+public protocol DataConvertible {
 	var binaryData: Data { get }
 	init?(binaryData: Data)
 }
@@ -39,11 +39,11 @@ protocol DataConvertible {
 
 extension Data: DataConvertible {
 	
-	var binaryData: Data {
+	public var binaryData: Data {
 		return self
 	}
 	
-	init?(binaryData: Data) {
+	public init?(binaryData: Data) {
 		self = binaryData
 	}
 	
@@ -53,14 +53,14 @@ extension Data: DataConvertible {
 
 extension String: DataConvertible {
 	
-	var binaryData: Data {
+	public var binaryData: Data {
 		if self.isEmpty {
 			return "\0".data(using: .utf8)!
 		}
 		return self.data(using: .utf8)!
 	}
 	
-	init?(binaryData: Data) {
+	public init?(binaryData: Data) {
 		guard let str = String(data: binaryData, encoding: .utf8) else {
 			return nil
 		}
