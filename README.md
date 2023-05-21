@@ -17,5 +17,4 @@ x.binaryData
 let y = T(binaryData: d) 
 ```
 
-Author: Raphaël Wach  
-[@raphaelwach](https://twitter.com/raphaelwach)
+Author: Raphaël Wach
